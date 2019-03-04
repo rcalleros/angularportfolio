@@ -72,11 +72,5 @@ export class ItemDetailComponent implements OnInit {
       map: this.map,
     });
   }
-  animationBegin(e){
-    console.log(e);
-    if(e.fromState == 'open'){
-      this.animStateFinished.emit('close');
-    }
-  }
 
 }

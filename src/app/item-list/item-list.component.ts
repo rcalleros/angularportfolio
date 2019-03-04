@@ -65,7 +65,6 @@ export class ItemListComponent implements OnInit {
     this.itemId = id;
     let data = this.itemList.filter((item,index)=>index == id);
     this.itemDetail = data[0];
-    this.animState = "open";
     this.detailViewActive = true;
   }
   onPressBack=()=>{
