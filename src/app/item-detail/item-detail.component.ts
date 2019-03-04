@@ -2,13 +2,9 @@
 import { Component, OnInit, Input,Output, ViewChild,Renderer2,ElementRef,EventEmitter } from '@angular/core';
 import {
   trigger,
-  state,
   style,
   animate,
   transition,
-  query,
-  stagger
-  // ...
 } from '@angular/animations';
 @Component({
   selector: 'app-item-detail',
