@@ -1,7 +1,7 @@
 <app-top-bar (clicked)="onPressBack($event)" [(detailViewActive)]="detailViewActive"></app-top-bar>
 <div *ngIf="itemId != undefined; then detail else list"></div>
 <ng-template  #detail>
-        <app-item-detail (animStateFinished)="showList($event)" [animState]="animState" [itemDetail]="itemDetail"></app-item-detail>
+        <app-item-detail (animStateFinished)="showList($event)" [itemDetail]="itemDetail"></app-item-detail>
 </ng-template>
 <ng-template #list>
         <ul @openClose class="item-list">
