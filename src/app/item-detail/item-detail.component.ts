@@ -13,60 +13,41 @@ import {
 @Component({
   selector: 'app-item-detail',
   animations: [
-    trigger('openClose',[
-      state('open', style({
-        transform:'translateX(0%)',
-      })),
-      state('close', style({
-        transform:'translateX(100%)',
-      })),
-      transition('open => close', [
-        animate('300ms',style({
+    trigger('openClose', [
+      transition(':enter', [
+        style({
           transform:'translateX(100%)',
-        }))
-      ]),
-      transition('close => open', [
+        }),
         animate('300ms',style({
           transform:'translateX(0%)',
         }))
       ]),
+      transition('void => *', [
+        animate('300ms',style({
+          transform:'translateX(100%)',
+        }))
+      ]),
     ]),
-    // trigger('openClose', [
-    //   transition(':enter', [
-    //     style({
-    //       transform:'translateX(100%)',
-    //     }),
-    //     animate('300ms',style({
-    //       transform:'translateX(0%)',
-    //     }))
-    //   ]),
-    //   transition(':leave', [
-    //     animate('300ms',style({
-    //       transform:'translateX(100%)',
-    //     }))
-    //   ]),
-    // ]),
   ],
   templateUrl: './item-detail.component.html',
   styleUrls: ['./item-detail.component.scss']
 })
 export class ItemDetailComponent implements OnInit {
+
   @ViewChild('gmap') gmapElement: ElementRef;
   @Input() itemDetail:any;
   @Input() animState:any;
   @Output() animStateFinished: EventEmitter<any> = new EventEmitter();
-  // gmapElement:any;
   map: google.maps.Map;
   latLng: any;
   mapProp:any;
   address:string;
   phone:string;
   twitter:string;
-  statename:string;
+
   constructor(private renderer: Renderer2) {}
 
   ngOnInit() {
-    console.log(this.animState);
     this.address = this.itemDetail.location.address;
     this.phone = this.itemDetail.contact== undefined ? false : this.itemDetail.contact.phone;
     this.twitter = this.itemDetail.contact== undefined ? false : this.itemDetail.contact.twitter;

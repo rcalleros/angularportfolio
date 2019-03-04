@@ -6,17 +6,14 @@ import { ItemDetailComponent } from '../item-detail/item-detail.component';
 import { TopBarComponent } from '../top-bar/top-bar.component';
 import {
   trigger,
-  state,
   style,
   animate,
   transition,
-  query,
-  stagger
-  // ...
 } from '@angular/animations';
 @Component({
   selector: 'app-item-list',
   animations: [
+  
     trigger('openClose', [
       transition(':enter', [
         style({
@@ -44,8 +41,6 @@ export class ItemListComponent implements OnInit {
   itemId:any;
   itemDetail:object;
   detailViewActive:boolean = false;
-  animState = 'close';
-  
   constructor(
     private Route: ActivatedRoute,
     private ListService:ListService) { }
@@ -74,14 +69,15 @@ export class ItemListComponent implements OnInit {
     this.detailViewActive = true;
   }
   onPressBack=()=>{
-    //this.itemId = undefined;
-    this.animState = "close";
-    //this.detailViewActive = false;
+
+   this.detailViewActive = false;
+   this.itemId = undefined;
+
   }
   showList(){
-    console.log('triggered');
-    this.itemId = undefined;
+    this.detailViewActive = false;
 
+    this.itemId = undefined;
   }
 
 }
