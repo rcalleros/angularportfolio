@@ -1,0 +1,77 @@
+.item-list{
+    width:100%;
+    max-width:1100px;
+    display:block;
+    margin:0 auto;
+    padding:0px 0px 60px 0px;
+    display:-webkit-flex;
+    display:flex;
+    flex-wrap:wrap;
+    -webkit-flex-wrap:wrap;
+
+    li{
+        list-style: none;
+        width:100%;
+        box-sizing: border-box;
+        margin:0px;
+        cursor: pointer;
+        .item-container{
+            display: block;
+            background:green;
+            position: relative;
+            width:100%;
+            height:180px;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-size: cover;
+            img{
+                width:100%;
+                display:block;
+                height:auto;
+            }
+            .item-name-holder{
+                position: absolute;
+                bottom:0px;
+                left:0px;
+                width:100%;
+                padding-top:20px;
+                background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 42%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 42%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 42%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                p{
+                    font-family:sans-serif;
+                    color:#fff;
+                    margin:0px;
+                    margin-bottom:6px;
+                    padding-left:12px;
+                }
+                .item-name{
+                    font-weight:bold;
+                    font-size:16px;
+                }
+                .item-category{
+                    font-size:12px;
+
+                }
+            }
+        }
+    }
+   
+}
+
+
+@media screen and (min-width:767px){
+    .item-list{
+        width:'100%';
+        display:-webkit-flex;
+        display:flex;
+        flex-wrap:wrap;
+        -webkit-flex-wrap:wrap;
+        li{
+            width:50%;
+            margin:0px;
+            padding:10px;
+         
+        }
+    }
+}
