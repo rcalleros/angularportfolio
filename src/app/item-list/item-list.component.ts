@@ -36,19 +36,19 @@ import {
 })
 export class ItemListComponent implements OnInit {
   itemList;
-  Item:Restaurants;
+  Item: Restaurants;
   routingSubscription: any;
   itemId:any;
-  itemDetail:object;
-  detailViewActive:boolean = false;
+  itemDetail: object;
+  detailViewActive: boolean = false;
   constructor(
     private Route: ActivatedRoute,
-    private ListService:ListService) { }
+    private ListService: ListService) { }
 
   ngOnInit() {
-    //get id from route
+    // get id from route
     this.routingSubscription = this.Route.params.subscribe(params=>this.itemId = params["id"]);
-    //get data from service
+    // get data from service
     this.getData();
   }
   getData=()=>{
@@ -57,7 +57,7 @@ export class ItemListComponent implements OnInit {
     });
   }
  
-  ngOnDestroy(){
+  OnDestroy(){
     this.routingSubscription.unsubscribe();
   }
 

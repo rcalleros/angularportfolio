@@ -2,15 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ItemListComponent } from './item-list/item-list.component';
 import { WebViewComponent } from './web-view/web-view.component';
+import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: ItemListComponent
   },
   {
-    path:'web',
+    path: 'web',
     component: WebViewComponent
+  },
+  {
+    path: 'signin',
+    component: SigninComponent
   },
 ];
 

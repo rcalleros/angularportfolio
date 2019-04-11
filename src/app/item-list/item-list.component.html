@@ -4,6 +4,7 @@
         <app-item-detail (animStateFinished)="showList($event)" [itemDetail]="itemDetail"></app-item-detail>
 </ng-template>
 <ng-template #list>
+      <div class="page-wrap">
         <ul @openClose class="item-list">
             <li *ngFor="let item of itemList; let id = index" [attr.data-index]="i">
               <div  (click)="onPress(id)" class="item-container" [ngStyle]="{'background-image':'url('+item.backgroundImageURL+')'}">
@@ -14,4 +15,5 @@
               </div>
             </li>
           </ul>
+        </div>
 </ng-template>

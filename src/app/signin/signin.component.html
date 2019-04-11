@@ -1,0 +1,10 @@
+<app-top-bar (clicked)="onPressBack($event)" [(detailViewActive)]="detailViewActive"></app-top-bar>
+
+<div class="page-wrap">
+  <h1>sign in</h1>
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <input formControlName="username" type="text" class="form-control"> 
+    <input formControlName="password" type="text" class="form-control"> 
+    <button type="submit">submit</button>
+</form>
+</div>
