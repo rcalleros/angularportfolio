@@ -2,8 +2,8 @@
 .item-list{
     padding:0px;
     width:100%;
-    display:inline-grid;
-    grid-template-columns:100%;
+    display:flex;
+    flex-wrap:wrap;
 }
 .item-list li{
     list-style-type: none;
@@ -57,14 +57,18 @@
     }
 }
 @media screen and (min-width:767px){
-    .item-list{
-        width:100%;
-        grid-template-columns:50% 50%;
+   
+    .item-list li{
+        width: 50%;
+
     }
 }
 @media screen and (min-width:992px){
     .item-list{
         width:100%;
-        grid-template-columns:33.333% 33.333% 33.333%;
+    }
+    .item-list li{
+        width:33.33%;
+        display:block;
     }
 }

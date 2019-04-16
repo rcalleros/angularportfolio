@@ -7,11 +7,13 @@
 
 @media screen and (min-width:767px){
     .nav-menu{
+        -ms-grid-column: 1;
         position: fixed;
         top:0px;
         left:0px;
         height:100%;
         display:block;
         width:25%;
+
     }
 }
