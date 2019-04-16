@@ -3,6 +3,7 @@
     padding:0px;
     width:100%;
     display:inline-grid;
+    justify-content: space-between;
     grid-template-columns:100%;
 }
 .item-list li{
@@ -58,13 +59,11 @@
 }
 @media screen and (min-width:767px){
     .item-list{
-        width:100%;
         grid-template-columns:50% 50%;
     }
 }
 @media screen and (min-width:992px){
     .item-list{
-        width:100%;
-        grid-template-columns:33.333% 33.333% 33.333%;
+        grid-template-columns:33.33% 33.33% 33.33%;
     }
 }

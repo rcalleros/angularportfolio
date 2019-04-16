@@ -4,7 +4,6 @@ import { Restaurants } from './Item';
 import { ActivatedRoute } from '@angular/router';
 import { ItemDetailComponent } from '../item-detail/item-detail.component';
 import { TopBarComponent } from '../top-bar/top-bar.component';
-import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 import {
   trigger,
   style,
@@ -14,68 +13,76 @@ import {
 @Component({
   selector: 'app-item-list',
   animations: [
-
+  
     trigger('openClose', [
       transition(':enter', [
         style({
-          transform: 'translateX(-100%)',
+          transform:'translateX(-100%)',
         }),
-        animate('300ms', style({
-          transform: 'translateX(0%)',
+        animate('300ms',style({
+          transform:'translateX(0%)',
         }))
       ]),
       transition(':leave', [
-        animate('300ms', style({
-          transform: 'translateX(-100%)',
+        animate('300ms',style({
+          transform:'translateX(-100%)',
         }))
       ]),
     ]),
   ],
-  providers: [ListService],
-  templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.scss']
+  providers:[ListService],
+  templateUrl: './editable-list.component.html',
+  styleUrls: ['./editable-list.component.scss']
 })
-export class ItemListComponent implements OnInit {
+export class EditableListComponent implements OnInit {
   itemList;
+  tempList;
   Item: Restaurants;
   routingSubscription: any;
-  itemId: any;
+  itemId:any;
   itemDetail: object;
-  detailViewActive = false;
+  detailViewActive: boolean = false;
   constructor(
     private Route: ActivatedRoute,
     private ListService: ListService) { }
 
   ngOnInit() {
     // get id from route
-    this.routingSubscription = this.Route.params.subscribe(params => this.itemId = params.id);
+    this.routingSubscription = this.Route.params.subscribe(params=>this.itemId = params["id"]);
     // get data from service
     this.getData();
   }
   getData = () => {
-    this.ListService.getItemList().subscribe((data: Restaurants) => this.itemList = data.restaurants);
+    this.ListService.getItemList().subscribe((data: Restaurants) => {
+      this.itemList = data.restaurants;
+      this.tempList = data.restaurants;
+    });
   }
 
-  OnDestroy() {
+ 
+  OnDestroy(){
     this.routingSubscription.unsubscribe();
   }
 
-  onPress = (id) => {
+  onPress= (id)=>{
     this.itemId = id;
-    const data = this.itemList.filter((item, index) => index === id);
+    let data = this.itemList.filter((item,index)=>index == id);
     this.itemDetail = data[0];
     this.detailViewActive = true;
   }
-  onPressBack = () => {
+  onPressBack=()=>{
 
    this.detailViewActive = false;
    this.itemId = undefined;
 
   }
-  showList() {
+  showList(){
     this.detailViewActive = false;
 
     this.itemId = undefined;
+  }
+  onDelete(itemName){
+    this.tempList = this.tempList.filter((itemObj)=> itemObj.name !== itemName);
   }
 
 }

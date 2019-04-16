@@ -1,0 +1,20 @@
+<app-top-bar (clicked)="onPressBack($event)" [(detailViewActive)]="detailViewActive"></app-top-bar>
+<div *ngIf="itemId != undefined; then detail else list"></div>
+<ng-template  #detail>
+        <app-item-detail (animStateFinished)="showList($event)" [itemDetail]="itemDetail"></app-item-detail>
+</ng-template>
+<ng-template #list>
+      <div class="container">
+        <ul @openClose class="item-list">
+            <li *ngFor="let item of tempList; let id = index" [attr.data-index]="i">
+              <div class="item-container" [ngStyle]="{'background-image':'url('+item.backgroundImageURL+')'}">
+                <button (click)="onDelete(item.name)">delete</button>
+                <div class="item-name-holder">
+                  <p class="item-name">{{item.name}}</p>
+                  <p class="item-category">{{item.category}}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+</ng-template>
