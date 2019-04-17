@@ -12,7 +12,6 @@ export class NavMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.isActive);
   }
   onCloseMenu = () => {
     this.isActive = false;

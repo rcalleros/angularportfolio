@@ -15,11 +15,9 @@ export class TopBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.isNavActive);
   }
 
   onPress = (elementClicked?: string) => {
-    console.log(elementClicked);
    
     if (elementClicked === 'mobileBtn') {
       this.isNavActive = 'true';

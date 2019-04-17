@@ -22,14 +22,14 @@
         </ng-template>
         <ng-template #list>
             <ul @openClose class="item-list">
-                <!-- <li *ngFor="let item of itemList; let id = index" [attr.data-index]="i">
+                <li *ngFor="let item of itemList; let id = index" [attr.data-index]="i">
                   <div  (click)="onPress(id)" class="item-container" [ngStyle]="{'background-image':'url('+item.backgroundImageURL+')'}">
                     <div class="item-name-holder">
                       <p class="item-name">{{item.name}}</p>
                       <p class="item-category">{{item.category}}</p>
                     </div>
                   </div>
-                </li> -->
+                </li>
                 <li>
                   <div (click)="onPress(id)" class="item-container">
                     <div class="item-name-holder">

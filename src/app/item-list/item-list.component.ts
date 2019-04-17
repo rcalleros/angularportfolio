@@ -74,7 +74,6 @@ export class ItemListComponent implements OnInit {
 
   }
   onPressLeftBtn(topBarProperties){
-    console.log(topBarProperties);
     if (topBarProperties.elementClicked === 'backBtn'){
       // detail view should return false to go back;
       this.detailViewActive = topBarProperties.detailViewActive;

@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SigninComponent } from './signin/signin.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     SigninComponent,
     FooterComponent,
     EditableListComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    CrossBrowserPaddingDirective
   ],
   imports: [
     BrowserModule,
