@@ -1,12 +1,19 @@
 
 <header class="header">
   <div class="container">
-  <div>
+  <div class="header__leftBtn">
     <div *ngIf="detailViewActive">
-      <button class="back-btn" (click)="onPress()">
+      <button class="back-btn" (click)="onPress('backBtn')">
         <img src="../assets/back-arrow.png"/>
       </button>
     </div>
+    <div *ngIf="!isNavActive && !detailViewActive">
+        <button class="header__menu-toggle show-on-mobile" (click)="onPress('mobileBtn')" aria-label="toggle-mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
   </div>
   <h1 class="title">portfolio</h1>
   <button class="map-icon">
@@ -14,3 +21,4 @@
   </button>
   </div>
 </header>
+

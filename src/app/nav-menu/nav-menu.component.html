@@ -1,4 +1,5 @@
-<div class="nav-menu">
+<div class="nav-menu" [ngClass]="{'nav-menu--active':isActive}">
+  <button (click)="onCloseMenu()" class="nav-menu__close-button show-on-mobile">X</button>
   <nav>
     <a href="#">Link</a>
     <a href="#">Link</a>

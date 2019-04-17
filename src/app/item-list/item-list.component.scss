@@ -1,12 +1,13 @@
 
 .item-list{
-    padding:0px;
+    padding:0px 5px;
     width:100%;
     display:flex;
     flex-wrap:wrap;
 }
 .item-list li{
     list-style-type: none;
+    width:100%;
 }
 .item-container{
     padding:20px;

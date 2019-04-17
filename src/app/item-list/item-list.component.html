@@ -1,9 +1,19 @@
-  <div class="wrap">
+  <div class="wrap" [ngClass]="{'wrap--menu-open':!isNavActive}">
   <!--<div><p>yo</p>nav menu place holder for css grid ie</div>-->
-  <app-nav-menu></app-nav-menu>
-
+  <div class="wrap__nav-menu-wrap" >
+    <app-nav-menu
+    (closeNavMenu)="closeNavMenu($event);"
+      [isActive]="isNavActive"
+      >
+    </app-nav-menu>
+  </div>
   <div class="main-content">
-    <app-top-bar (clicked)="onPressBack($event)" [(detailViewActive)]="detailViewActive"></app-top-bar>
+    <app-top-bar 
+      (clicked)="onPressLeftBtn($event)" 
+      [(detailViewActive)]="detailViewActive"
+      [isNavActive]="isNavActive"
+      >
+    </app-top-bar>
       <div class="grid-row-content container">
 
         <div *ngIf="itemId != undefined; then detail else list"></div>
@@ -12,14 +22,14 @@
         </ng-template>
         <ng-template #list>
             <ul @openClose class="item-list">
-                <li *ngFor="let item of itemList; let id = index" [attr.data-index]="i">
+                <!-- <li *ngFor="let item of itemList; let id = index" [attr.data-index]="i">
                   <div  (click)="onPress(id)" class="item-container" [ngStyle]="{'background-image':'url('+item.backgroundImageURL+')'}">
                     <div class="item-name-holder">
                       <p class="item-name">{{item.name}}</p>
                       <p class="item-category">{{item.category}}</p>
                     </div>
                   </div>
-                </li>
+                </li> -->
                 <li>
                   <div (click)="onPress(id)" class="item-container">
                     <div class="item-name-holder">

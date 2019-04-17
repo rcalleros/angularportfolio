@@ -42,6 +42,7 @@ export class ItemListComponent implements OnInit {
   itemId: any;
   itemDetail: object;
   detailViewActive = false;
+  isNavActive = false;
   constructor(
     private Route: ActivatedRoute,
     private ListService: ListService) { }
@@ -72,10 +73,24 @@ export class ItemListComponent implements OnInit {
    this.itemId = undefined;
 
   }
+  onPressLeftBtn(topBarProperties){
+    console.log(topBarProperties);
+    if (topBarProperties.elementClicked === 'backBtn'){
+      // detail view should return false to go back;
+      this.detailViewActive = topBarProperties.detailViewActive;
+      // id to undefined;
+      this.itemId = undefined;
+    } else if (topBarProperties.elementClicked === 'mobileBtn') {
+      this.isNavActive = topBarProperties.isNavActive;
+    }
+  }
   showList() {
     this.detailViewActive = false;
 
     this.itemId = undefined;
+  }
+  closeNavMenu =() => {
+    this.isNavActive = false;
   }
 
 }

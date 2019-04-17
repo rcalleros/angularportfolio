@@ -10,12 +10,40 @@ body{
     margin:0;
     // height:100vh;
 }
-.grid-row-content{
-    -ms-grid-row:2;
+button{
+    cursor: pointer;
 }
-.grid-row-footer{
-    -ms-grid-row:3;
+.show-on-mobile{
+    display:block;
 }
+.wrap__nav-menu-wrap{
+    flex-basis:0%;
+    overflow:hidden;
+    transition:all .35s ease-in;
+    
+}
+
+.wrap__nav-menu--open{
+    flex-basis:25%;
+}
+.header__menu-toggle{
+    width:46px;
+    height:46px;
+    padding:12px 9px;
+    background:transparent;
+    border:0;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+    .header__menu-toggle span{
+        display:block;
+        width:100%;
+        height:4px;
+        background:#fff;
+    }
+
 .container {
     display:block;
     box-sizing: border-box;
@@ -53,23 +81,13 @@ form button{
 .wrap{
     border:1px solid red;
     min-height:100%;
-    display:-ms-grid;
-    -ms-grid-columns:100%;
-    -ms-grid-rows:1fr;
-
-    display:grid;
-    grid-template-columns:100%;
-    grid-template-rows:1fr;
-
+    display:flex; 
 }
-.main-content{
-    display:-ms-grid;
-    -ms-grid-rows: auto 1fr auto;
-    -ms-grid-columns:100%;
+    .wrap--menu-open{
 
-    display:grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns:100%;
+    }
+.main-content{
+   flex-basis: 100%;
 }
 .footer p{
     text-align:center;
@@ -89,26 +107,18 @@ form button{
 }
 
 @media screen and (min-width:767px){
+    .show-on-mobile{
+        display:none;
+    }
     .wrap{
-        display:-ms-grid;
-        -ms-grid-columns:25% 1fr;
-        -ms-grid-rows:1fr;
-        min-height:100%;
-
-        display:grid;
-        grid-template-columns:25% 1fr;
-        grid-template-rows:1fr;
+       
     
     }
     .main-content{
-        min-height:100vh;
-        display:-ms-grid;
-        -ms-grid-rows: auto 1fr auto;
-        -ms-grid-columns:100%;
-        -ms-grid-column:2;
-
-        display:grid;
-        grid-template-rows: auto 1fr auto;
-        grid-template-columns:100%;
+        flex-basis: 75%;
+     }
+     .wrap__nav-menu-wrap{
+        flex-basis:25%;
+        
     }
 }

@@ -1,19 +1,61 @@
 .nav-menu{
+    position:fixed;
     height:100%;
+    width:100%;
+    top:0px;
+    left:0px;
     background:#6E86CC;
-    display:none;
+    display:block;
+    transform: translateX(-100%);
+    transition:all .35s ease-in;
     z-index: 10;
+    padding:20px;
+    
+}
+.nav-menu a{
+    display:block;
+    color:#fff;
+    text-transform: uppercase;
+    margin-bottom:20px
+
+}
+.nav-menu--active{
+    transform:translateX(0%);
+}
+.nav-menu__close-button{
+    position: absolute;
+    width:40px;
+    height:40px;
+    right:20px;
+    top:20px;
+    color:#fff;
+    border:0;
+    font-size:20px;
+    background:transparent; 
+}
+
+
+@supports not (padding: env(safe-area-inset-left,12px)) {
+    .nav-menu {
+        padding-left: env(safe-area-inset-left,12px);
+        padding-right: env(safe-area-inset-right,12px);
+        // padding-left: unquote("max(12px, env(safe-area-inset-left))");
+        // padding-right: unquote("max(12px, env(safe-area-inset-right))");
+    }
 }
 
 @media screen and (min-width:767px){
+    :host{
+        width:25%;
+    }
     .nav-menu{
-        -ms-grid-column: 1;
         position: fixed;
         top:0px;
         left:0px;
+        width:25%;
         height:100%;
         display:block;
-        width:25%;
-
+        transform: translateX(0%); 
     }
+  
 }
