@@ -43,9 +43,10 @@ export class ItemListComponent implements OnInit {
   itemDetail: object;
   detailViewActive = false;
   isNavActive = false;
+  projectList: Array<any> = [];
   constructor(
     private Route: ActivatedRoute,
-    private ListService: ListService) { }
+    private ProjectService: ListService) { }
 
   ngOnInit() {
     // get id from route
@@ -54,16 +55,26 @@ export class ItemListComponent implements OnInit {
     this.getData();
   }
   getData = () => {
-    this.ListService.getItemList().subscribe((data: Restaurants) => this.itemList = data.restaurants);
+    this.ProjectService.getItemList().subscribe((data: Restaurants) => {
+      this.projectList = this.cleanUpResponse(data);
+    });
   }
 
   OnDestroy() {
     this.routingSubscription.unsubscribe();
   }
-
+  
+  cleanUpResponse = (data): object[] => data.map((item, i) => {
+    return {
+      id: item.id,
+      title: item.title.rendered,
+      content: item.content.rendered,
+      image: item._embedded['wp:featuredmedia']['0'].source_url
+    };
+  })
   onPress = (id) => {
     this.itemId = id;
-    const data = this.itemList.filter((item, index) => index === id);
+    const data = this.projectList.filter((item, index) => item.id === id);
     this.itemDetail = data[0];
     this.detailViewActive = true;
   }

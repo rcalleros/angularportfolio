@@ -6,12 +6,11 @@
     >
       <div #gmap style="width:100%;height:180px"></div>
       <div class="name-container">
-        <p class="item-name">{{itemDetail.name}}</p>
-        <p class="item-category">{{itemDetail.name}}</p>
+        <p class="item-name">{{itemDetail.title}}</p>
       </div>
       <div class="details">
-        <div *ngIf="address">
-          <p class="item-address">{{address}}</p>
+        <div>
+          <p class="item-address">{{itemDetail.content}}</p>
         </div>
         <div *ngIf="phone">
           <p class="item-phone">{{phone}}</p>

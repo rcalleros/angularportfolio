@@ -22,16 +22,16 @@
         </ng-template>
         <ng-template #list>
             <ul @openClose class="item-list">
-                <li *ngFor="let item of itemList; let id = index" [attr.data-index]="i">
-                  <div  (click)="onPress(id)" class="item-container" [ngStyle]="{'background-image':'url('+item.backgroundImageURL+')'}">
+                <li *ngFor="let item of projectList;" [attr.data-index]="i">
+                  <div  (click)="onPress(item.id)" class="item-container" [ngStyle]="{'background-image':'url('+item.image+')'}">
                     <div class="item-name-holder">
-                      <p class="item-name">{{item.name}}</p>
+                      <p class="item-name">{{item.title}}</p>
                       <p class="item-category">{{item.category}}</p>
                     </div>
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -39,7 +39,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -47,7 +47,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -55,7 +55,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -63,7 +63,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -71,7 +71,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -79,7 +79,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -87,7 +87,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -95,7 +95,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -103,7 +103,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -111,7 +111,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -119,7 +119,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -127,7 +127,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -135,7 +135,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -143,7 +143,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -151,7 +151,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -159,7 +159,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -167,7 +167,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -175,7 +175,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>
@@ -183,7 +183,7 @@
                   </div>
                 </li>
                 <li>
-                  <div (click)="onPress(id)" class="item-container">
+                  <div (click)="onPress(item.id)" class="item-container">
                     <div class="item-name-holder">
                       <p class="item-name">Name</p>
                       <p class="item-category">Category</p>

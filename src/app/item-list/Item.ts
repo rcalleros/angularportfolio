@@ -1,3 +1,3 @@
 export interface Restaurants {
-    restaurants:string;
+    restaurants: object[];
 }
