@@ -1,0 +1,12 @@
+<div>
+  <h1>project</h1>
+  <div  class="project-forms">
+    <ul>
+      <li *ngFor="let item of formModel;let id = index">
+        <add-project-form (formModel)="updateFormModel($event)" [id]="id" [item]="item"></add-project-form>
+      </li>
+    </ul>
+    <button (click)="addNewProject()">add Project</button>
+
+  </div>
+</div>
