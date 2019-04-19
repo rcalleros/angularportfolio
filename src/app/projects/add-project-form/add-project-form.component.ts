@@ -24,7 +24,7 @@ export class AddProjectFormComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     console.warn(this.id);
   }
-  updateFormModel(){
+  updateFormModel() {
     const formModel = {
       id: this.id,
       ...this.addProjectForm.value

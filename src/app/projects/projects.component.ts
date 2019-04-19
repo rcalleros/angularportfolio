@@ -39,7 +39,7 @@ export class ProjectsComponent implements OnInit {
 
   }
 
-  addNewProject(){
+  addNewProject() {
     const newId  = this.formModel.length;
     this.formModel.push(new Project(newId, '', '', ''));
   }
