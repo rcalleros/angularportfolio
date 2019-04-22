@@ -2,11 +2,12 @@
   <h1>project</h1>
   <div  class="project-forms">
     <ul>
-      <li *ngFor="let item of formModel;let id = index">
-        <add-project-form (formModel)="updateFormModel($event)" [id]="id" [item]="item"></add-project-form>
+      <li *ngFor="let item of availableProjects();let id = index">
+        <add-project-form (formModel)="updateFormModel($event)" [id]="item.Id" [item]="item"></add-project-form>
       </li>
     </ul>
-    <button (click)="addNewProject()">add Project</button>
+
+    <button *ngIf="formsValid()" class="add-project-form" (click)="addNewProject()">add Project</button>
 
   </div>
 </div>

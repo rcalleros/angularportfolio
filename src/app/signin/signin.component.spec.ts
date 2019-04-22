@@ -5,8 +5,10 @@ import { SigninComponent } from './signin.component';
 describe('SigninComponent', () => {
   let component: SigninComponent;
   let fixture: ComponentFixture<SigninComponent>;
+  let sut;
 
   beforeEach(async(() => {
+    sut = {};
     TestBed.configureTestingModule({
       declarations: [ SigninComponent ]
     })
@@ -20,6 +22,10 @@ describe('SigninComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    sut.a = false;
+    
+    //act
+    sut.a = true;
+    expect(sut.a).toBe(true);
   });
 });

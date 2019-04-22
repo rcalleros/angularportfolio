@@ -7,10 +7,10 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class CrossBrowserPaddingDirective {
 
   constructor(
-    private render:Renderer2,
-    private el:ElementRef) { }
+    private render: Renderer2,
+    private el: ElementRef) { }
  
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     // console.log(this.render.selectRootElement(this.el.nativeElement));
     this.addStyle();
   }

@@ -1,8 +1,8 @@
 <div class="nav-menu" [ngClass]="{'nav-menu--active':isActive}" crossBrowserPadding>
   <button (click)="onCloseMenu()" class="nav-menu__close-button show-on-mobile">X</button>
   <nav>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
+    <a routerLink="/projects" routerLinkActive="active">Projects</a>
+    <a routerLink="/signin" routerLinkActive="active">Sign In</a>
+    <a routerLink="/projectlist" routerLinkActive="active">project list</a>
   </nav>
 </div>

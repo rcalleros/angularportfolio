@@ -56,10 +56,16 @@ button{
     position: relative;
     
 }
-input{
+input,
+textarea{
     border:0px;
     margin-bottom:20px;
     border-bottom:1px solid #2E55BF;
+}
+textarea{
+    width:100%;
+    height:100px;
+    border:1px solid #2E55BF;
 }
 h1{
     border-bottom:3px solid #2E55BF;
@@ -70,7 +76,7 @@ form{
     display:block;
     margin:0 auto;
     padding:15px;
-
+    margin-bottom:20px;
 }
 form button{
     background:#3158CC;
@@ -85,9 +91,7 @@ form button{
     min-height:100%;
     display:flex; 
 }
-    .wrap--menu-open{
-
-    }
+   
 .main-content{
    flex-basis: 100%;
 }
@@ -107,7 +111,9 @@ form button{
     width:100%;
     height:40px;
 }
-
+.view-container{
+    padding:0px 15px 15px 15px;
+}
 @media screen and (min-width:767px){
     .show-on-mobile{
         display:none;

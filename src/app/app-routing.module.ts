@@ -4,10 +4,11 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { EditableListComponent } from './editable-list/editable-list.component';
 import { WebViewComponent } from './web-view/web-view.component';
 import { SigninComponent } from './signin/signin.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'projectlist',
     component: ItemListComponent
   },
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'signin',
     component: SigninComponent
+  },
+  {
+    path: 'projects',
+    component: ProjectsComponent
   },
 ];
 

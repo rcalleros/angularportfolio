@@ -1,20 +1,3 @@
-  <div class="wrap" [ngClass]="{'wrap--menu-open':!isNavActive}">
-  <!--<div><p>yo</p>nav menu place holder for css grid ie</div>-->
-  <div class="wrap__nav-menu-wrap" >
-    <app-nav-menu
-    (closeNavMenu)="closeNavMenu($event);"
-      [isActive]="isNavActive"
-      >
-    </app-nav-menu>
-  </div>
-  <div class="main-content">
-    <app-top-bar 
-      (clicked)="onPressLeftBtn($event)" 
-      [(detailViewActive)]="detailViewActive"
-      [isNavActive]="isNavActive"
-      >
-    </app-top-bar>
-      <div class="grid-row-content container">
 
         <div *ngIf="itemId != undefined; then detail else list"></div>
         <ng-template  #detail>
@@ -192,9 +175,4 @@
                 </li>
               </ul>
         </ng-template>
-    </div>
-    <div class="grid-row-footer">
-      <app-footer></app-footer>
-    </div>
-  </div>
-</div>
+  

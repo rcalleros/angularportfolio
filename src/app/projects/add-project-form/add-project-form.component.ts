@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import {Project} from '../project.model';
+import {Project, ProjectModel} from '../project.model';
 @Component({
   selector: 'add-project-form',
   templateUrl: './add-project-form.component.html',
@@ -9,15 +9,17 @@ import {Project} from '../project.model';
 export class AddProjectFormComponent implements OnInit {
 
   addProjectForm: FormGroup;
-
-  constructor(private fb: FormBuilder) { }
-  @Input() item: Project;
+  isDeleted = false;
+  @Input() item: ProjectModel;
   @Input() id: number;
   @Output() formModel: EventEmitter<any> = new EventEmitter();
+
+  constructor(private fb: FormBuilder) { }
+
   ngOnInit() {
     this.addProjectForm = this.fb.group({
-      Name: [this.item.Name, [Validators.required]],
-      Content: [this.item.Content, [Validators.required]]
+      Name: [this.item.Values.Name, [Validators.required]],
+      Content: [this.item.Values.Content, [Validators.required]]
     });
   }
   onSubmit() {
@@ -25,14 +27,21 @@ export class AddProjectFormComponent implements OnInit {
     console.warn(this.id);
   }
   updateFormModel() {
+    console.log(this.addProjectForm);
     const formModel = {
-      id: this.id,
-      ...this.addProjectForm.value
+      Id: this.id,
+      IsValid: (this.addProjectForm.status === 'VALID'),
+      IsDeleted: this.isDeleted,
+      Values: {...this.addProjectForm.value}
     };
     this.formModel.emit(formModel);
   }
-  onBlur() {
-    console.log(this.addProjectForm.value);
+  onDelete() {
+    this.isDeleted = true;
+    this.updateFormModel();
+
+  }
+  onChange() {
     this.updateFormModel();
   }
 

@@ -1,3 +1,27 @@
 
 
-<router-outlet></router-outlet>
+<div class="wrap" [ngClass]="{'wrap--menu-open':!isNavActive}">
+    <!--<div><p>yo</p>nav menu place holder for css grid ie</div>-->
+    <div class="wrap__nav-menu-wrap" >
+      <app-nav-menu
+      (closeNavMenu)="closeNavMenu($event);"
+        [isActive]="isNavActive"
+        >
+      </app-nav-menu>
+    </div>
+    <div class="main-content">
+      <app-top-bar 
+        (clicked)="onPressLeftBtn($event)" 
+        [(detailViewActive)]="detailViewActive"
+        [isNavActive]="isNavActive"
+        >
+      </app-top-bar>
+        <div class="view-container container">
+            <router-outlet></router-outlet>
+        </div>
+      <div class="grid-row-footer">
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+  

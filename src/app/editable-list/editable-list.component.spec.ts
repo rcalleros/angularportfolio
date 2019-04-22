@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EditableListComponent } from './editable-list.component';
 
 describe('ItemListComponent', () => {
-  let component: ItemListComponent;
-  let fixture: ComponentFixture<ItemListComponent>;
+  let component: EditableListComponent;
+  let fixture: ComponentFixture<EditableListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

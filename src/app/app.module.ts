@@ -16,6 +16,8 @@ import { SigninComponent } from './signin/signin.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding.directive';
+import { ProjectsComponent } from './projects/projects.component';
+import { AddProjectFormComponent } from './projects/add-project-form/add-project-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding
     FooterComponent,
     EditableListComponent,
     NavMenuComponent,
-    CrossBrowserPaddingDirective
+    CrossBrowserPaddingDirective,
+    ProjectsComponent,
+    AddProjectFormComponent
   ],
   imports: [
     BrowserModule,
