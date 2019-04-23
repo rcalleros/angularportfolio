@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
+import {BusyModule, BusyConfig} from 'angular2-busy';
+
 import { AppComponent } from './app.component';
 
 import { ItemListComponent } from './item-list/item-list.component';
@@ -39,7 +41,16 @@ import { AddProjectFormComponent } from './projects/add-project-form/add-project
     AppRoutingModule ,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BusyModule.forRoot(
+      new BusyConfig({
+          message: 'Don\'t panic!',
+            backdrop: false,
+            template: '<div class="progress-loader-overlay"><div class="loader">{{message}}</div></div>',
+            delay: 200,
+            minDuration: 600,
+            wrapperClass: 'my-class'
+        }))
   ],
   providers: [],
   bootstrap: [AppComponent]

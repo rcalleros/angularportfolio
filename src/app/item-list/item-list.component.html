@@ -4,6 +4,7 @@
           <app-item-detail (animStateFinished)="showList($event)" [itemDetail]="itemDetail"></app-item-detail>
         </ng-template>
         <ng-template #list>
+            <div [ngBusy]="{busy: busy, message: '', backdrop: false, delay: 200, minDuration: 600}"></div>
             <ul @openClose class="item-list">
                 <li *ngFor="let item of projectList;" [attr.data-index]="i">
                   <div  (click)="onPress(item.id)" class="item-container" [ngStyle]="{'background-image':'url('+item.image+')'}">

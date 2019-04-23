@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemDetailComponent } from '../item-detail/item-detail.component';
 import { TopBarComponent } from '../top-bar/top-bar.component';
 import { NavMenuComponent } from '../nav-menu/nav-menu.component';
+import {Subscription} from 'rxjs';
 import {
   trigger,
   style,
@@ -36,6 +37,7 @@ import {
   styleUrls: ['./item-list.component.scss']
 })
 export class ItemListComponent implements OnInit {
+  busy: Subscription;
   itemList;
   Item: Restaurants;
   routingSubscription: any;
@@ -55,7 +57,7 @@ export class ItemListComponent implements OnInit {
     this.getData();
   }
   getData = () => {
-    this.ProjectService.getItemList().subscribe((data: Restaurants) => {
+   this.busy = this.ProjectService.getItemList().subscribe((data: Restaurants) => {
       this.projectList = this.cleanUpResponse(data);
     });
   }
