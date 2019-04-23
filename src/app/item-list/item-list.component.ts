@@ -58,7 +58,7 @@ export class ItemListComponent implements OnInit {
   }
   getData = () => {
    this.busy = this.ProjectService.getItemList().subscribe((data: Restaurants) => {
-      this.projectList = this.cleanUpResponse(data);
+      this.projectList = data;
     });
   }
 
