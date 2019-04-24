@@ -20,6 +20,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding.directive';
 import { ProjectsComponent } from './projects/projects.component';
 import { AddProjectFormComponent } from './projects/add-project-form/add-project-form.component';
+import { PromiseTrackerComponent } from './promise-tracker/promise-tracker.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AddProjectFormComponent } from './projects/add-project-form/add-project
     NavMenuComponent,
     CrossBrowserPaddingDirective,
     ProjectsComponent,
-    AddProjectFormComponent
+    AddProjectFormComponent,
+    PromiseTrackerComponent
   ],
   imports: [
     BrowserModule,

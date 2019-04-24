@@ -39,6 +39,8 @@ export class ItemListComponent implements OnInit {
   projectList: Array<any> = [];
   detailViewActive = false;
   itemId: any;
+  promiseTracker = true;
+  error: string ;
 
   constructor(
     private Route: ActivatedRoute,
@@ -52,9 +54,12 @@ export class ItemListComponent implements OnInit {
     this.getData();
   }
   getData = () => {
-   this.busy = this.ProjectService.getItemList().subscribe((data) => {
-      this.projectList = data;
-    });
+    const loadProjectsObs = {
+      next: (data) => this.projectList = data,
+      error: () => this.error = 'something wrong',
+      complete: () => this.promiseTracker = false
+    };
+    this.ProjectService.getItemList().subscribe(loadProjectsObs);
   }
 
   OnDestroy() {
