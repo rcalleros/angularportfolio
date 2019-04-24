@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListService } from './list.services';
-import { Restaurants } from './Item';
 import { ActivatedRoute } from '@angular/router';
-import { ItemDetailComponent } from '../item-detail/item-detail.component';
-import { TopBarComponent } from '../top-bar/top-bar.component';
-import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 import {Subscription} from 'rxjs';
 import {
   trigger,
@@ -38,14 +34,12 @@ import {
 })
 export class ItemListComponent implements OnInit {
   busy: Subscription;
-  itemList;
-  Item: Restaurants;
-  routingSubscription: any;
-  itemId: any;
+  routingSubscription: Subscription;
   itemDetail: object;
-  detailViewActive = false;
-  isNavActive = false;
   projectList: Array<any> = [];
+  detailViewActive = false;
+  itemId: any;
+
   constructor(
     private Route: ActivatedRoute,
     private ProjectService: ListService) { }
@@ -53,11 +47,12 @@ export class ItemListComponent implements OnInit {
   ngOnInit() {
     // get id from route
     this.routingSubscription = this.Route.params.subscribe(params => this.itemId = params.id);
+    console.log(this.itemId);
     // get data from service
     this.getData();
   }
   getData = () => {
-   this.busy = this.ProjectService.getItemList().subscribe((data: Restaurants) => {
+   this.busy = this.ProjectService.getItemList().subscribe((data) => {
       this.projectList = data;
     });
   }
@@ -65,44 +60,19 @@ export class ItemListComponent implements OnInit {
   OnDestroy() {
     this.routingSubscription.unsubscribe();
   }
-  
-  cleanUpResponse = (data): object[] => data.map((item, i) => {
-    return {
-      id: item.id,
-      title: item.title.rendered,
-      content: item.content.rendered,
-      image: item._embedded['wp:featuredmedia']['0'].source_url
-    };
-  })
+
   onPress = (id) => {
     this.itemId = id;
     const data = this.projectList.filter((item, index) => item.id === id);
     this.itemDetail = data[0];
     this.detailViewActive = true;
   }
-  onPressBack = () => {
-
-   this.detailViewActive = false;
-   this.itemId = undefined;
-
-  }
-  onPressLeftBtn(topBarProperties){
-    if (topBarProperties.elementClicked === 'backBtn'){
-      // detail view should return false to go back;
-      this.detailViewActive = topBarProperties.detailViewActive;
-      // id to undefined;
-      this.itemId = undefined;
-    } else if (topBarProperties.elementClicked === 'mobileBtn') {
-      this.isNavActive = topBarProperties.isNavActive;
-    }
-  }
+ 
   showList() {
     this.detailViewActive = false;
 
     this.itemId = undefined;
   }
-  closeNavMenu =() => {
-    this.isNavActive = false;
-  }
+
 
 }

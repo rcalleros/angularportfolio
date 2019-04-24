@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,Output, ViewChild,Renderer2,ElementRef,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, Renderer2, ElementRef, EventEmitter } from '@angular/core';
 import {
   trigger,
   style,
@@ -11,15 +11,15 @@ import {
     trigger('openClose', [
       transition(':enter', [
         style({
-          transform:'translateX(100%)',
+          transform: 'translateX(100%)',
         }),
-        animate('300ms',style({
-          transform:'translateX(0%)',
+        animate('300ms', style({
+          transform: 'translateX(0%)',
         }))
       ]),
       transition('void => *', [
-        animate('300ms',style({
-          transform:'translateX(100%)',
+        animate('300ms', style({
+          transform: 'translateX(100%)',
         }))
       ]),
     ]),
@@ -29,12 +29,12 @@ import {
 })
 export class ItemDetailComponent implements OnInit {
 
-  @Input() itemDetail:any;
-  @Input() animState:any;
+  @Input() itemDetail: any;
+  @Input() animState: any;
   @Output() animStateFinished: EventEmitter<any> = new EventEmitter();
-  address:string;
-  phone:string;
-  twitter:string;
+  address: string;
+  phone: string;
+  twitter: string;
 
   constructor(private renderer: Renderer2) {}
 
@@ -45,7 +45,7 @@ export class ItemDetailComponent implements OnInit {
     // this.twitter = this.itemDetail.contact== undefined ? false : this.itemDetail.contact.twitter;
   }
 
-  
-  
+
+
 
 }

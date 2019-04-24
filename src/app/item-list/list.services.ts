@@ -2,11 +2,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Restaurants } from './Item';
-import { map } from "rxjs/operators";
+import { map } from 'rxjs/operators';
 @Injectable()
 export class ListService {
   constructor(private http: HttpClient) { }
-  // Url = 'https://s3.amazonaws.com/br-codingexams/restaurants.json';
   Url = 'https://uimagic.com/wp-json/wp/v2/project?_embed';
   itemList: Restaurants;
 

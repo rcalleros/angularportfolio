@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'projects',
     component: ProjectsComponent
   },
+  {
+    path: 'projectlist/:id',
+    component: ItemListComponent
+  },
 ];
 
 @NgModule({
