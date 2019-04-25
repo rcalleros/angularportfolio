@@ -49,7 +49,6 @@ export class ItemListComponent implements OnInit {
   ngOnInit() {
     // get id from route
     this.routingSubscription = this.Route.params.subscribe(params => this.itemId = params.id);
-    console.log(this.itemId);
     // get data from service
     this.getData();
   }

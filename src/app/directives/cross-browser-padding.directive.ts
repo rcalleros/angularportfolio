@@ -11,7 +11,6 @@ export class CrossBrowserPaddingDirective {
     private el: ElementRef) { }
  
   ngAfterViewInit() {
-    // console.log(this.render.selectRootElement(this.el.nativeElement));
     this.addStyle();
   }
   addStyle(){
@@ -24,7 +23,6 @@ export class CrossBrowserPaddingDirective {
   hasPadding = () =>{
     const elStyle = window.getComputedStyle(this.el.nativeElement);
     const padding = elStyle.getPropertyValue('padding-left');
-    console.log(padding);
     return padding !== '0px'
   }
 

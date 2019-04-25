@@ -7,20 +7,20 @@ import {BusyModule, BusyConfig} from 'angular2-busy';
 
 import { AppComponent } from './app.component';
 
-import { ItemListComponent } from './item-list/item-list.component';
-import { EditableListComponent } from './editable-list/editable-list.component';
+import { ItemListComponent } from './components/item-list/item-list.component';
+import { EditableListComponent } from './components/editable-list/editable-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ItemDetailComponent } from './item-detail/item-detail.component';
-import { WebViewComponent } from './web-view/web-view.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { ItemDetailComponent } from './components/item-detail/item-detail.component';
+import { WebViewComponent } from './components/web-view/web-view.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SigninComponent } from './signin/signin.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding.directive';
-import { ProjectsComponent } from './projects/projects.component';
-import { AddProjectFormComponent } from './projects/add-project-form/add-project-form.component';
-import { PromiseTrackerComponent } from './promise-tracker/promise-tracker.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AddProjectFormComponent } from './components/projects/add-project-form/add-project-form.component';
+import { PromiseTrackerComponent } from './components/promise-tracker/promise-tracker.component';
 
 @NgModule({
   declarations: [
