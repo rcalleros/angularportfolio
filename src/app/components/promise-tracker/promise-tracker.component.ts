@@ -1,32 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ObservableTracker } from '../../services/observabletracker.service'
 import { Observable, merge} from 'rxjs';
 
 @Component({
   selector: 'promise-tracker',
-  template: '<div class="progress-loader-overlay"><div class="loader"><h1>promise</h1></div></div>',
-  styleUrls: ['./promise-tracker.component.scss']
+  template: '<div class="progress-loader-overlay"><button (click)="stopIt()"> stop it</button><div class="loader"><h1>promise</h1></div></div>',
+  styleUrls: ['./promise-tracker.component.scss'],
+  // providers: [ObservableTracker]
 })
 export class PromiseTrackerComponent implements OnInit {
-  constructor() { }
+  isActive = true;
+
+  constructor(private tracker: ObservableTracker) { }
 
   ngOnInit() {
+    //this.tracker.initTracker().subscribe((isActive) => this.isActive = isActive);
   }
-
-  sequenceSubscriber(observer) {
-    // synchronously deliver 1, 2, and 3, then complete
-    observer.next(1);
-    observer.next(2);
-    observer.next(3);
-    observer.complete();
-
-    // unsubscribe function doesn't need to do anything in this
-    // because values are delivered synchronously
-    return {unsubscribe() {}};
-  }
-  // todo: update type 'Observ'
-  ready = (...Observ: any[]) => {
-    const obs1 = new Observable(this.sequenceSubscriber);
-
-    return merge(obs1, ...Observ);
+  stopIt(){
+    this.tracker.updateState(false);
   }
 }

@@ -30,7 +30,7 @@ import {
       ]),
     ]),
   ],
-  providers: [ListService , ObservableTracker],
+  providers: [ListService],
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.scss']
 })
@@ -43,6 +43,7 @@ export class ItemListComponent implements OnInit {
   itemId: any;
   promiseTracker = true;
   error: string ;
+  trackerObj;
 
   constructor(
     private Route: ActivatedRoute,
@@ -59,10 +60,12 @@ export class ItemListComponent implements OnInit {
   getData = () => {
     const arrayOfObserv = [this.ProjectService.getItemList()];
     const loadProjectsObs = {
-      // next: (data) => conskole.log(data),
-      next: (data) => typeof data === 'object' ? this.projectList = data : '',
+      // next: (data) => console.log(data),
+      next: (data) => {
+        return typeof data === 'object' ? this.projectList = data : '';
+      },
       error: () => this.error = 'something wrong',
-      complete: () => this.promiseTracker = false
+      complete: () => this.tracker.updateState(false)
     };
     // this.ProjectService.getItemList().subscribe(loadProjectsObs);
 
@@ -74,6 +77,7 @@ export class ItemListComponent implements OnInit {
   }
 
   OnDestroy() {
+    this.trackerObj.unsubscribe();
     this.routingSubscription.unsubscribe();
   }
 
@@ -88,6 +92,9 @@ export class ItemListComponent implements OnInit {
     this.detailViewActive = false;
 
     this.itemId = undefined;
+  }
+  startIt(){
+    this.tracker.updateState(true);
   }
 
 

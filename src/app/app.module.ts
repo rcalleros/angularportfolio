@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import {BusyModule, BusyConfig} from 'angular2-busy';
+import {ObservableTracker} from './services/observabletracker.service';
 
 import { AppComponent } from './app.component';
 
@@ -54,7 +55,7 @@ import { PromiseTrackerComponent } from './components/promise-tracker/promise-tr
             wrapperClass: 'my-class'
         }))
   ],
-  providers: [],
+  providers: [ObservableTracker],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

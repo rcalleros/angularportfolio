@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ObservableTracker } from './services/observabletracker.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -13,14 +14,16 @@ export class AppComponent implements OnInit {
   title = 'ng-portfolio';
   detailViewActive = false;
   itemId: any;
+  trackerActive;
 
   constructor (
     private Route: ActivatedRoute,
+    private tracker: ObservableTracker
   ) {}
 
   ngOnInit() {
     this.routingSubscription = this.Route.params.subscribe(params => this.itemId = params.id);
-    console.log(this.itemId);
+    this.tracker.currentState.subscribe((isActive) => this.trackerActive = isActive);
   }
 
   onPressLeftBtn(topBarProperties) {
