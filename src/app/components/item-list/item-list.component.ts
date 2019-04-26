@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ListService } from './list.services';
+import { ListService } from '../../services/list.services';
+import { ObservableTracker } from '../../services/observabletracker.service';
 import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 import {Subscription} from 'rxjs';
 import {
   trigger,
@@ -28,7 +30,7 @@ import {
       ]),
     ]),
   ],
-  providers: [ListService],
+  providers: [ListService , ObservableTracker],
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.scss']
 })
@@ -44,7 +46,8 @@ export class ItemListComponent implements OnInit {
 
   constructor(
     private Route: ActivatedRoute,
-    private ProjectService: ListService) { }
+    private ProjectService: ListService,
+    private tracker: ObservableTracker) { }
 
   ngOnInit() {
     // get id from route
@@ -52,13 +55,22 @@ export class ItemListComponent implements OnInit {
     // get data from service
     this.getData();
   }
+
   getData = () => {
+    const arrayOfObserv = [this.ProjectService.getItemList()];
     const loadProjectsObs = {
-      next: (data) => this.projectList = data,
+      // next: (data) => conskole.log(data),
+      next: (data) => typeof data === 'object' ? this.projectList = data : '',
       error: () => this.error = 'something wrong',
       complete: () => this.promiseTracker = false
     };
-    this.ProjectService.getItemList().subscribe(loadProjectsObs);
+    // this.ProjectService.getItemList().subscribe(loadProjectsObs);
+
+    this.tracker.ready(...arrayOfObserv).subscribe(loadProjectsObs);
+  }
+
+  organizeRequest = (data) => {
+    return data.map( (item, i) => data[i] = item );
   }
 
   OnDestroy() {

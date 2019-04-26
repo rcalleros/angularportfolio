@@ -1,11 +1,11 @@
         <promise-tracker *ngIf="promiseTracker" ></promise-tracker>
+        <h1>{{error}}</h1>
         <div *ngIf="itemId != undefined; then detail else list"></div>
         <ng-template  #detail>
           <app-item-detail (animStateFinished)="showList($event)" [itemDetail]="itemDetail"></app-item-detail>
         </ng-template>
         <ng-template #list>
             <p>{{error}}</p>
-            <div [ngBusy]="{busy: busy, message: '', backdrop: false, delay: 200, minDuration: 600}"></div>
             <ul @openClose class="item-list">
               <li *ngFor="let item of projectList;" [attr.data-index]="i">
                 <div  (click)="onPress(item.id)" class="item-container" [ngStyle]="{'background-image':'url('+item.image+')'}">

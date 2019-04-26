@@ -1,18 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable, merge} from 'rxjs';
 
-@Component({
-  selector: 'promise-tracker',
-  template: '<div class="progress-loader-overlay"><div class="loader"><h1>promise</h1></div></div>',
-  styleUrls: ['./promise-tracker.component.scss']
-})
-export class PromiseTrackerComponent implements OnInit {
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, merge} from 'rxjs';
+import { map } from 'rxjs/operators';
+
+@Injectable()
+export class ObservableTracker {
+
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  sequenceSubscriber(observer) {
+   sequenceSubscriber(observer) {
     // synchronously deliver 1, 2, and 3, then complete
     observer.next(1);
     observer.next(2);
@@ -29,4 +26,5 @@ export class PromiseTrackerComponent implements OnInit {
 
     return merge(obs1, ...Observ);
   }
+
 }
