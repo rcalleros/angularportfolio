@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {BusyModule, BusyConfig} from 'angular2-busy';
-import {ObservableTracker} from './services/observabletracker.service';
+import { BusyModule, BusyConfig } from 'angular2-busy';
+import { ObservableTracker} from './services/observabletracker.service';
 
 import { AppComponent } from './app.component';
 
@@ -21,7 +21,7 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding.directive';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddProjectFormComponent } from './components/projects/add-project-form/add-project-form.component';
-import { PromiseTrackerComponent } from './components/promise-tracker/promise-tracker.component';
+import { ObservableTrackerComponent } from './components/observable-tracker/observable-tracker.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { PromiseTrackerComponent } from './components/promise-tracker/promise-tr
     CrossBrowserPaddingDirective,
     ProjectsComponent,
     AddProjectFormComponent,
-    PromiseTrackerComponent
+    ObservableTrackerComponent
   ],
   imports: [
     BrowserModule,
