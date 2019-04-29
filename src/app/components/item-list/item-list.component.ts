@@ -35,15 +35,21 @@ import {
   styleUrls: ['./item-list.component.scss']
 })
 export class ItemListComponent implements OnInit {
-  busy: Subscription;
-  routingSubscription: Subscription;
   itemDetail: object;
   projectList: Array<any> = [];
   detailViewActive = false;
-  itemId: any;
-  promiseTracker = true;
   error: string ;
+  itemId: number;
   trackerObj;
+
+  // define default subscribe callbacks
+  loadProjectsObs = {
+    next: (data) => {
+      return data.projectList ? this.projectList = data.projectList : [];
+    }, // this needs to change according to needs
+    error: (err) => this.error = err,
+    complete: () => this.tracker.updateState(false) // hides loadingSpinner when complete
+  };
 
   constructor(
     private Route: ActivatedRoute,
@@ -52,33 +58,21 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit() {
     // get id from route
-    this.routingSubscription = this.Route.params.subscribe(params => this.itemId = params.id);
     // get data from service
     this.getData();
   }
 
   getData = () => {
+    // where ever we need data services, just pass them to an array
     const arrayOfObserv = [this.ProjectService.getItemList()];
-    const loadProjectsObs = {
-      // next: (data) => console.log(data),
-      next: (data) => {
-        return typeof data === 'object' ? this.projectList = data : '';
-      },
-      error: () => this.error = 'something wrong',
-      complete: () => this.tracker.updateState(false)
-    };
-    // this.ProjectService.getItemList().subscribe(loadProjectsObs);
 
-    this.tracker.ready(...arrayOfObserv).subscribe(loadProjectsObs);
-  }
-
-  organizeRequest = (data) => {
-    return data.map( (item, i) => data[i] = item );
+    // tracker service injected into constructor
+    this.trackerObj = this.tracker.ready(...arrayOfObserv).subscribe(this.loadProjectsObs);
   }
 
   OnDestroy() {
+    // prevent leaks from our tracker
     this.trackerObj.unsubscribe();
-    this.routingSubscription.unsubscribe();
   }
 
   onPress = (id) => {
@@ -87,14 +81,15 @@ export class ItemListComponent implements OnInit {
     this.itemDetail = data[0];
     this.detailViewActive = true;
   }
- 
+
   showList() {
     this.detailViewActive = false;
-
     this.itemId = undefined;
   }
-  startIt(){
-    this.tracker.updateState(true);
+
+  startIt() {
+    // example tracker ready on press event
+    this.tracker.ready(this.ProjectService.getItemList()).subscribe(this.loadProjectsObs);
   }
 
 

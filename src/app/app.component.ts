@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
   }
 
   onPressLeftBtn(topBarProperties) {
-    console.table(topBarProperties);
     if (topBarProperties.elementClicked === 'backBtn') {
 
       // detail view should return false to go back;

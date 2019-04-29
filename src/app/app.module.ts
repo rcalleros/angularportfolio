@@ -21,7 +21,7 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding.directive';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddProjectFormComponent } from './components/projects/add-project-form/add-project-form.component';
-import { ObservableTrackerComponent } from './components/observable-tracker/observable-tracker.component';
+import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { ObservableTrackerComponent } from './components/observable-tracker/obse
     CrossBrowserPaddingDirective,
     ProjectsComponent,
     AddProjectFormComponent,
-    ObservableTrackerComponent
+    LoadingOverlayComponent
   ],
   imports: [
     BrowserModule,
