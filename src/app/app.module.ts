@@ -22,6 +22,8 @@ import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddProjectFormComponent } from './components/projects/add-project-form/add-project-form.component';
 import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
+import { PaypalButtonsComponent } from './components/paypal-buttons/paypal-buttons.component';
+import { FeesComponent } from './components/fees/fees.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { LoadingOverlayComponent } from './components/loading-overlay/loading-ov
     CrossBrowserPaddingDirective,
     ProjectsComponent,
     AddProjectFormComponent,
-    LoadingOverlayComponent
+    LoadingOverlayComponent,
+    PaypalButtonsComponent,
+    FeesComponent
   ],
   imports: [
     BrowserModule,

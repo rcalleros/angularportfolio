@@ -5,6 +5,7 @@ import { EditableListComponent } from './components/editable-list/editable-list.
 import { WebViewComponent } from './components/web-view/web-view.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { FeesComponent } from './components/fees/fees.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'projectlist/:id',
     component: ItemListComponent
   },
+  {
+    path: 'fees',
+    component: FeesComponent
+  }
 ];
 
 @NgModule({
