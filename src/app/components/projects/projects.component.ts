@@ -1,55 +1,67 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import {ProjectModel, Project} from './project.model';
+import { FormControl, FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
+import {ProjectModel, Project, ProjectViewModel} from './project.model';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
+
 export class ProjectsComponent implements OnInit {
 
- formModel: ProjectModel[];
-
-  constructor() {
-    this.formModel = [
+  model = new ProjectViewModel();
+  projectsForm: any;
+  constructor(
+    private fb: FormBuilder
+  ) {
+    this.model.Projects = [
         {
-          Id: 0,
-          IsValid: true,
-          IsDeleted: false,
-          Values: {
             Name: 'example1',
             Content: 'more text',
-            Image: 'empty string'
-            }
         },
         {
-          Id: 1,
-          IsValid: true,
-          IsDeleted: false,
-          Values: {
           Name: 'example2',
           Content: 'some text',
-          Image: 'empty string'
-        }
         }];
   }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.projectsForm = this.formInit(); // init form with FormBuilder
+    if ( this.model.Projects.length > 0) {
+      this.model.Projects.forEach((item) => this.addNewProject(item) );
+    }
 
-  updateFormModel(project: ProjectModel) {
-    console.log(project);
-    this.formModel[project.Id] = {...project };
+    console.log(this.projectsArray);
+   }
 
+
+
+  addNewProject(item) {
+    const newId  = this.model.Projects.length;
+    const model = new Project();
+    const newProject  = this.projectForm(item);
+    this.projectsArray.push(newProject);
+    console.log(this.projectsForm);
   }
 
-  availableProjects = () => this.formModel.filter((item) => !item.IsDeleted);
-  formsValid = () => {
-    const isValid = this.formModel.filter(item => !item.IsValid && !item.IsDeleted);
-    return isValid.length === 0;
-  }
+  formInit = () => this.fb.group({
+    FirstName: ['', [Validators.required]],
+    LastName: ['', [Validators.required]],
+    Projects: this.fb.array([])
+  })
 
-  addNewProject() {
-    const newId  = this.formModel.length;
-    this.formModel.push(new ProjectModel(newId, false, false, {Name: '', Content: '', Image: ''} ));
+  projectForm = (data?: Project) => this.fb.group({
+    Name: [data ? data.Name : '', [Validators.required]],
+    Content: [data ? data.Content : '', [Validators.required]],
+  })
+
+  deleteProject(index) {
+    this.projectsArray.removeAt(index);
+  }
+  getValuesFromFormGroup() {
+      Object.keys(this.projectsForm.controls).forEach((field) =>  this.model[field] = this.projectsForm.controls[field].value);
+  }
+  get projectsArray() {
+    return this.projectsForm.get('Projects');
   }
 }

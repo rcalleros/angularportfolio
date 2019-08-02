@@ -11,7 +11,7 @@ export class PaypalAuth {
   access_token: string;
 }
 export class PaypalOrder {
-  links: string[];
+  links: any;
 }
 
 @Injectable()

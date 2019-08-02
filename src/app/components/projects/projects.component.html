@@ -1,13 +1,39 @@
 <div>
   <h1>project</h1>
-  <div  class="project-forms">
-    <ul>
-      <li *ngFor="let item of availableProjects();let id = index">
-        <add-project-form (formModel)="updateFormModel($event)" [id]="item.Id" [item]="item"></add-project-form>
-      </li>
-    </ul>
-
-    <button *ngIf="formsValid()" class="add-project-form" (click)="addNewProject()">add Project</button>
-
-  </div>
+  <p>form invalid: {{projectsForm.invalid | json}}</p>
+  <p>form touched: {{projectsForm.touched}}</p>
+  <p>{{this.model | json}}</p>
+  <form id="ProjectForm" [formGroup]="projectsForm" class="project-forms">
+    <div class="project-form">
+      <div class="form-group">
+        <input type="text" placeholder="First Name" formControlName="FirstName">
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Last Name" formControlName="LastName">
+      </div>
+    </div>
+ 
+    <div formArrayName="Projects">
+      <div *ngFor="let address of projectsArray.controls; let i=index">
+        {{address.controls.values|json}}
+        <div class="project-form" formGroupName={{i}}>
+          <button type="button" (click)="deleteProject(i)">Delete</button>
+          <div class="form-group">
+            <label>Name</label>
+            <input placeholder="Name" type="text" formControlName="Name">
+            <p *ngIf="address.controls.Name.dirty && address.controls.Name.errors?.required" class="error">
+              Name is required</p>
+          </div>
+          <div class="form-group">
+            <label>Content</label>
+            <textarea placeholder="Content" type="text" formControlName="Content"> </textarea>
+            <p *ngIf="address.controls.Content.dirty && address.controls.Content.errors?.required" class="error">Name is
+              required</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button *ngIf="!projectsArray.invalid" class="add-project-form-btn" (click)="addNewProject()">add Project</button>
+    <button (click)="getValuesFromFormGroup()">"save it...sorta"</button>
+  </form>
 </div>

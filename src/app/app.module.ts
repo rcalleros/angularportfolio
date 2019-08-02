@@ -24,6 +24,7 @@ import { AddProjectFormComponent } from './components/projects/add-project-form/
 import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
 import { PaypalButtonsComponent } from './components/paypal-buttons/paypal-buttons.component';
 import { FeesComponent } from './components/fees/fees.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FeesComponent } from './components/fees/fees.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule ,
     ReactiveFormsModule,
     HttpClientModule,
