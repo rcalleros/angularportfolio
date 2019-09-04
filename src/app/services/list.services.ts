@@ -2,8 +2,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Restaurants } from './Item';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ListService {
@@ -11,7 +11,7 @@ export class ListService {
   Url = 'https://uimagic.com/wp-json/wp/v2/project?_embed';
   itemList: Restaurants;
 
-  getItemList = () => this.http.get<Restaurants>(this.Url).pipe(map( data => this.cleanUpResponse(data)));
+  getItemList = () => this.http.get<Restaurants>(this.Url).pipe(this.handleError(),map( data => this.cleanUpResponse(data)))
 
   cleanUpResponse = (data): object => {
     const projects = data.map((item) => {
@@ -20,8 +20,13 @@ export class ListService {
         title: item.title.rendered,
         content: item.content.rendered,
         image: item._embedded['wp:featuredmedia']['0'].source_url
-      }
+      };
     });
     return { projectList : projects};
-}
+  }
+  handleError = () => catchError((err, caught) => {
+    console.log(err);
+    return of('error dude');
+  }
+  )
 }

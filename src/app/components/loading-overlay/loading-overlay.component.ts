@@ -3,6 +3,7 @@ import { ObservableTracker } from '../../services/observabletracker.service';
 
 @Component({
   selector: 'loading-overlay',
+  // tslint:disable-next-line: max-line-length
   template: '<div *ngIf="isActive" class="progress-loader-overlay"><button (click)="stopIt()"> stop it</button><div class="loader"></div></div>',
   styleUrls: ['./loading-overlay.component.scss'],
 })

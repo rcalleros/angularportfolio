@@ -3,7 +3,7 @@ import { ListService } from '../../services/list.services';
 import { ObservableTracker } from '../../services/observabletracker.service';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
-import {Subscription} from 'rxjs';
+import {Subscription, forkJoin} from 'rxjs';
 import {
   trigger,
   style,
@@ -31,10 +31,10 @@ import {
     ]),
   ],
   providers: [ListService],
-  templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.scss']
+  templateUrl: './project-list.component.html',
+  styleUrls: ['./project-list.component.scss']
 })
-export class ItemListComponent implements OnInit {
+export class ProjectListComponent implements OnInit {
   itemDetail: object;
   projectList: Array<any> = [];
   detailViewActive = false;
@@ -45,10 +45,11 @@ export class ItemListComponent implements OnInit {
   // define default subscribe callbacks
   loadProjectsObs = {
     next: (data) => {
+      console.log(data);
       return data.projectList ? this.projectList = data.projectList : [];
     }, // this needs to change according to needs
     error: (err) => this.error = err,
-    complete: () => this.tracker.updateState(false) // hides loadingSpinner when complete
+    // complete: () => this.tracker.updateState(false) // hides loadingSpinner when complete
   };
 
   constructor(
@@ -67,7 +68,7 @@ export class ItemListComponent implements OnInit {
     const arrayOfObserv = [this.ProjectService.getItemList()];
 
     // tracker service injected into constructor
-    this.trackerObj = this.tracker.ready(arrayOfObserv).subscribe(this.loadProjectsObs);
+    this.tracker.ready(this.ProjectService.getItemList()).subscribe(this.loadProjectsObs);
   }
 
   OnDestroy() {
@@ -88,8 +89,21 @@ export class ItemListComponent implements OnInit {
   }
 
   startIt() {
+    const fetches = [
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+      this.ProjectService.getItemList(),
+    ];
     // example tracker ready on press event
-    this.tracker.ready(this.ProjectService.getItemList()).subscribe(this.loadProjectsObs);
+    this.tracker.ready(forkJoin(fetches)).subscribe(this.loadProjectsObs);
   }
 
 

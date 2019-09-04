@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BusyModule, BusyConfig } from 'angular2-busy';
@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { EditableListComponent } from './components/editable-list/editable-list.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 import { WebViewComponent } from './components/web-view/web-view.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
@@ -25,6 +24,9 @@ import { LoadingOverlayComponent } from './components/loading-overlay/loading-ov
 import { PaypalButtonsComponent } from './components/paypal-buttons/paypal-buttons.component';
 import { FeesComponent } from './components/fees/fees.component';
 import { CommonModule } from '@angular/common';
+import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ObservableTrackerInterceptor } from './services/observabletracker.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { CommonModule } from '@angular/common';
     AddProjectFormComponent,
     LoadingOverlayComponent,
     PaypalButtonsComponent,
-    FeesComponent
+    FeesComponent,
+    ProjectListComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,9 @@ import { CommonModule } from '@angular/common';
             wrapperClass: 'my-class'
         }))
   ],
-  providers: [ObservableTracker],
+  providers: [ObservableTracker,
+    { provide: HTTP_INTERCEPTORS, useClass: ObservableTrackerInterceptor, multi: true },
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,15 +14,12 @@ export class ProjectsComponent implements OnInit {
   constructor(
     private fb: FormBuilder
   ) {
-    this.model.Projects = [
-        {
-            Name: 'example1',
-            Content: 'more text',
-        },
-        {
-          Name: 'example2',
-          Content: 'some text',
-        }];
+   this.model.Projects = [
+     {
+       Name: 'John Jacobs',
+       Content: 'some example'
+     }
+    ];
   }
 
   ngOnInit() {
@@ -47,6 +44,7 @@ export class ProjectsComponent implements OnInit {
   formInit = () => this.fb.group({
     FirstName: ['', [Validators.required]],
     LastName: ['', [Validators.required]],
+    street: ['', [Validators.required]],
     Projects: this.fb.array([])
   })
 
@@ -59,9 +57,12 @@ export class ProjectsComponent implements OnInit {
     this.projectsArray.removeAt(index);
   }
   getValuesFromFormGroup() {
-      Object.keys(this.projectsForm.controls).forEach((field) =>  this.model[field] = this.projectsForm.controls[field].value);
+    Object.keys(this.projectsForm.controls).forEach((field) =>  this.model[field] = this.projectsForm.controls[field].value);
   }
   get projectsArray() {
     return this.projectsForm.get('Projects');
   }
+  //poc masking
+  // performance hit?
+  // id's ?
 }

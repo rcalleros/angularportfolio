@@ -6,11 +6,12 @@ import { WebViewComponent } from './components/web-view/web-view.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FeesComponent } from './components/fees/fees.component';
+import { ProjectListComponent } from './components/project-list/project-list.component';
 
 const routes: Routes = [
   {
     path: 'projectlist',
-    component: ItemListComponent
+    component: ProjectListComponent
   },
   {
     path: 'edit',
