@@ -17,7 +17,6 @@ approveUrl = 'http://someurl.com';
   }
   onPressPay() {
     this.paypalService.createOrder().subscribe((data) => { 
-      console.log(data.links[1].href);
       this.approveUrl = data.links ? data.links[1].href : '';
     });
    // this.paypalService.auth().subscribe((data) => { console.log(data); });

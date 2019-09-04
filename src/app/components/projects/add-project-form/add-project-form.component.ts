@@ -27,7 +27,6 @@ export class AddProjectFormComponent implements OnInit {
     console.warn(this.id);
   }
   updateFormModel() {
-    console.log(this.addProjectForm);
     const formModel = {
       Id: this.id,
       IsValid: (this.addProjectForm.status === 'VALID'),

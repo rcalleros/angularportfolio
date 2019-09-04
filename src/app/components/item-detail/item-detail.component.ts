@@ -39,7 +39,6 @@ export class ItemDetailComponent implements OnInit {
   constructor(private renderer: Renderer2) {}
 
   ngOnInit() {
-    console.log(this.itemDetail);
     // this.address = this.itemDetail.location.address;
     // this.phone = this.itemDetail.contact== undefined ? false : this.itemDetail.contact.phone;
     // this.twitter = this.itemDetail.contact== undefined ? false : this.itemDetail.contact.twitter;

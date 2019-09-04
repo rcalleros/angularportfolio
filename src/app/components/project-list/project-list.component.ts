@@ -45,7 +45,6 @@ export class ProjectListComponent implements OnInit {
   // define default subscribe callbacks
   loadProjectsObs = {
     next: (data) => {
-      console.log(data);
       return data.projectList ? this.projectList = data.projectList : [];
     }, // this needs to change according to needs
     error: (err) => this.error = err,

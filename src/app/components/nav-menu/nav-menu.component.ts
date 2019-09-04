@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,9 +10,12 @@ export class NavMenuComponent implements OnInit {
   @Input() isActive: boolean;
   @Output() closeNavMenu: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    console.log(this.router);
   }
   onCloseMenu = () => {
     this.isActive = false;

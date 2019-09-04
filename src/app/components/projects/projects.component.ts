@@ -28,7 +28,6 @@ export class ProjectsComponent implements OnInit {
       this.model.Projects.forEach((item) => this.addNewProject(item) );
     }
 
-    console.log(this.projectsArray);
    }
 
 
@@ -38,7 +37,6 @@ export class ProjectsComponent implements OnInit {
     const model = new Project();
     const newProject  = this.projectForm(item);
     this.projectsArray.push(newProject);
-    console.log(this.projectsForm);
   }
 
   formInit = () => this.fb.group({

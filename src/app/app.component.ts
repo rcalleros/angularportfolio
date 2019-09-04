@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   itemId: any;
   trackerActive;
 
-  constructor (
+  constructor(
     private Route: ActivatedRoute,
     private tracker: ObservableTracker
   ) {}
