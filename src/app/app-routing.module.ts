@@ -7,11 +7,15 @@ import { SigninComponent } from './components/signin/signin.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { FeesComponent } from './components/fees/fees.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ChildOneComponent } from './components/child-one/child-one.component';
+import { ChildTwoComponent } from './components/child-two/child-two.component';
+import { ChildThreeComponent } from './components/child-three/child-three.component';
+
 
 const routes: Routes = [
   {
     path: 'projectlist',
-    component: ProjectListComponent
+    component: ProjectListComponent,
   },
   {
     path: 'edit',
@@ -36,6 +40,18 @@ const routes: Routes = [
   {
     path: 'fees',
     component: FeesComponent
+  },
+  {
+    path: 'child-one',
+    component: ChildOneComponent
+  },
+  {
+    path: 'child-two',
+    component: ChildTwoComponent
+  },
+  {
+    path: 'child-three',
+    component: ChildThreeComponent
   }
 ];
 

@@ -26,6 +26,9 @@ import { FeesComponent } from './components/fees/fees.component';
 import { CommonModule } from '@angular/common';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ObservableTrackerInterceptor } from './services/observabletracker.interceptor';
+import { ChildOneComponent } from './components/child-one/child-one.component';
+import { ChildTwoComponent } from './components/child-two/child-two.component';
+import { ChildThreeComponent } from './components/child-three/child-three.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { ObservableTrackerInterceptor } from './services/observabletracker.inter
     LoadingOverlayComponent,
     PaypalButtonsComponent,
     FeesComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    ChildOneComponent,
+    ChildTwoComponent,
+    ChildThreeComponent
   ],
   imports: [
     BrowserModule,

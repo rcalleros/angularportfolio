@@ -1,9 +1,25 @@
-<div class="nav-menu" [ngClass]="{'nav-menu--active':isActive}" crossBrowserPadding>
+<div class="nav-menu" [ngClass]="{'nav-menu--active':isActive}">
   <button (click)="onCloseMenu()" class="nav-menu__close-button show-on-mobile">X</button>
-  <nav>
+  <!-- <nav>
     <a routerLink="/projects" routerLinkActive="active">Projects</a>
     <a routerLink="/signin" routerLinkActive="active">Sign In</a>
     <a routerLink="/projectlist" routerLinkActive="active">project list</a>
     <a routerLink="/fees" routerLinkActive="active">Fees</a>
+  </nav> -->
+  <nav>
+    <ul>
+      <li *ngFor="let route of routeList;">
+        <a *ngIf="!route.submenu" routerLink={{route.path}} routerLinkActive="active">{{route.path}}</a>
+        <button class="routeParentBtn" (click)="showSubMenu(route.path)" *ngIf="route.submenu" type="button">{{route.path}} <span>&gt;</span></button>
+
+          <!-- <ul *ngIf="route.submenu" class="sub-menu">
+            <li *ngFor="let childRoute of route.submenu"><a routerLink={{childRoute.path}} routerLinkActive="active">{{childRoute.path}}</a></li>
+          </ul> -->
+      </li>
+    </ul>
+    <ul [@inOutAnimation] *ngIf="subMenuRoutes.length > 0" class="submenu">
+      <button (click)="menuHome()" type="button">&lt; back</button>
+      <li *ngFor="let route of subMenuRoutes[0].submenu">{{route.path}}</li>
+    </ul>
   </nav>
 </div>
