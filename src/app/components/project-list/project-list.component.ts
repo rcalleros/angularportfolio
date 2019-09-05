@@ -53,8 +53,7 @@ export class ProjectListComponent implements OnInit {
 
   constructor(
     private Route: ActivatedRoute,
-    private ProjectService: ListService,
-    private tracker: ObservableTracker) { }
+    private ProjectService: ListService) { }
 
   ngOnInit() {
     // get id from route
@@ -67,7 +66,7 @@ export class ProjectListComponent implements OnInit {
     const arrayOfObserv = [this.ProjectService.getItemList()];
 
     // tracker service injected into constructor
-    this.tracker.ready(this.ProjectService.getItemList()).subscribe(this.loadProjectsObs);
+    this.ProjectService.getItemList().subscribe(this.loadProjectsObs);
   }
 
   OnDestroy() {
@@ -102,7 +101,7 @@ export class ProjectListComponent implements OnInit {
       this.ProjectService.getItemList(),
     ];
     // example tracker ready on press event
-    this.tracker.ready(forkJoin(fetches)).subscribe(this.loadProjectsObs);
+    forkJoin(fetches).subscribe(this.loadProjectsObs);
   }
 
 

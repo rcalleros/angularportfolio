@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BusyModule, BusyConfig } from 'angular2-busy';
@@ -20,7 +20,7 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { CrossBrowserPaddingDirective } from './directives/cross-browser-padding.directive';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddProjectFormComponent } from './components/projects/add-project-form/add-project-form.component';
-import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
+import { LoaderComponent } from './components/loader/loader.component';
 import { PaypalButtonsComponent } from './components/paypal-buttons/paypal-buttons.component';
 import { FeesComponent } from './components/fees/fees.component';
 import { CommonModule } from '@angular/common';
@@ -29,7 +29,8 @@ import { ObservableTrackerInterceptor } from './services/observabletracker.inter
 import { ChildOneComponent } from './components/child-one/child-one.component';
 import { ChildTwoComponent } from './components/child-two/child-two.component';
 import { ChildThreeComponent } from './components/child-three/child-three.component';
-
+import { LoaderService } from './services/loader.service';
+import { LoaderInterceptor } from './services/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { ChildThreeComponent } from './components/child-three/child-three.compon
     CrossBrowserPaddingDirective,
     ProjectsComponent,
     AddProjectFormComponent,
-    LoadingOverlayComponent,
+    LoaderComponent,
     PaypalButtonsComponent,
     FeesComponent,
     ProjectListComponent,
@@ -70,8 +71,10 @@ import { ChildThreeComponent } from './components/child-three/child-three.compon
             wrapperClass: 'my-class'
         }))
   ],
-  providers: [ObservableTracker,
-    { provide: HTTP_INTERCEPTORS, useClass: ObservableTrackerInterceptor, multi: true },
+  providers: [
+    LoaderService,
+    ObservableTracker,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     ],
   bootstrap: [AppComponent]
 })
